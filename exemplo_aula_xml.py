@@ -1,5 +1,17 @@
 import xml.etree.ElementTree as ET
 
+link = '{http://maven.apache.org/POM/4.0.0}'
+
+def get_child(elem):
+    if len(elem)==0:
+        print('Tag:',elem.tag.replace(link,''))
+        print('Attrb:',elem.text)
+    else:
+        print('Tag:',elem.tag.replace(link,''))
+        for subelem in elem:
+            get_child(subelem)
+
+
 def ler_xml(caminho_arquivo):
     try:
         # Analisa o arquivo XML
@@ -7,11 +19,10 @@ def ler_xml(caminho_arquivo):
         root = tree.getroot()
 
         # Aqui, você pode acessar os elementos e atributos do XML conforme necessário
+
         for elemento in root:
-            print("Tag:", elemento.tag)
-            print("Atributos:", elemento.attrib)
-            for subelemento in elemento:
-                print(f"    {subelemento.tag}: {subelemento.text}")
+            get_child(elem=elemento)                
+
 
     except ET.ParseError as e:
         print(f"Erro ao analisar o arquivo XML: {e}")
