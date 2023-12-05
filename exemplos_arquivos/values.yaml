@@ -1,0 +1,10 @@
+---
+- name: Stop Kafka
+  hosts: all
+  gather_facts: false
+  become: true
+  any_errors_fatal: true
+  serial: 1
+  tasks:
+    - name: Stop Kafka
+      shell: sudo systemctl restart kafka
