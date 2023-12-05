@@ -8,10 +8,16 @@ def ler_xml(caminho_arquivo):
 
         # Aqui, você pode acessar os elementos e atributos do XML conforme necessário
         for elemento in root:
-            print("Tag:", elemento.tag)
-            print("Atributos:", elemento.attrib)
+            print("Tag:", elemento.tag.split('}')[1])
+            print("Atributos:", elemento.text)
             for subelemento in elemento:
-                print(f"    {subelemento.tag}: {subelemento.text}")
+                print(f"    {subelemento.tag.split('}')[1]}: {subelemento.text}")
+                for subsubelemento in subelemento:
+                    print(f"        {subsubelemento.tag.split('}')[1]}: {subsubelemento.text}")
+                    for subsubsubelemento in subsubelemento:
+                        print(f"            {subsubsubelemento.tag.split('}')[1]}: {subsubsubelemento.text}")
+                        for subsubsubsubelemento in subsubsubelemento:
+                            print(f"                {subsubsubsubelemento.tag.split('}')[1]}: {subsubsubsubelemento.text}")
 
     except ET.ParseError as e:
         print(f"Erro ao analisar o arquivo XML: {e}")
