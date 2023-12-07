@@ -2,10 +2,13 @@ import requests
 import json
 
 def ler_json_da_web(url):
-    x = requests.get('https://api.thecatapi.com/v1/images/search?limit=10')
-
-    for element in x.json():
-        print(element['id'])
+    # Faz um pedido à API
+    x = requests.get(url)
+    # Converte o valor em binário para formato "json" entendível
+    output = json.loads(x.content)
+    # Percorre o output e lista o conteúdo
+    for element in output:
+        print(element)
 
 def ler_arquivo_json(caminho_arquivo):
     with open(caminho_arquivo, 'r') as arquivo:
@@ -30,7 +33,13 @@ def escrever_arquivo_json(caminho_arquivo):
 
     print(f"Arquivo JSON '{caminho_arquivo}' criado com sucesso!")
 
+
+# Cat API - https://developers.thecatapi.com/view-account/ylX4blBYT9FaoVd6OhvR?report=bOoHBz-8t
+catApi = 'https://api.thecatapi.com/v1/images/search?limit=10'
+# https://github.com/15Dkatz/official_joke_api
+jokeApi = 'https://official-joke-api.appspot.com/random_joke'
 json_leitura = 'exemplos_arquivos/squirtle.json'
 json_escrita = 'exemplos_arquivos/exemplo.json'
-ler_arquivo_json(json_leitura)
-escrever_arquivo_json(json_escrita)
+# ler_arquivo_json(json_leitura)
+# escrever_arquivo_json(json_escrita)
+ler_json_da_web(catApi)
