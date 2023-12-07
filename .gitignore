@@ -1,5 +1,8 @@
 roteiro.md
-projeto/*
+projeto/n*
+projeto/*.json
+projeto/*.yaml
+projeto/*.xml
 db/*
 01/*
 .DS_STORE

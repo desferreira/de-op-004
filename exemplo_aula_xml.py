@@ -17,12 +17,10 @@ def ler_xml(caminho_arquivo):
         # Analisa o arquivo XML
         tree = ET.parse(caminho_arquivo)
         root = tree.getroot()
-
         # Aqui, você pode acessar os elementos e atributos do XML conforme necessário
 
         for elemento in root:
             get_child(elem=elemento)                
-
 
     except ET.ParseError as e:
         print(f"Erro ao analisar o arquivo XML: {e}")
@@ -44,6 +42,12 @@ def criar_xml(caminho_arquivo):
     idade2 = ET.SubElement(pessoa2, "Idade")
     idade2.text = "25"
 
+    pessoa3 = ET.SubElement(root, "Pessoa")
+    nome3 = ET.SubElement(pessoa3, "Nome")
+    nome3.text = "Diego"
+    idade3 = ET.SubElement(pessoa3, "Idade")
+    idade3.text = "99"
+
     # Cria a árvore XML
     tree = ET.ElementTree(root)
 
@@ -54,8 +58,7 @@ def criar_xml(caminho_arquivo):
 
 # Chama a função para criar o XML
 
-
 xml_entrada = 'exemplos_arquivos/pom.xml'
 xml_saida = 'exemplos_arquivos/escrita.xml'
-criar_xml(xml_saida)
 ler_xml(xml_entrada)
+# criar_xml(xml_saida)
