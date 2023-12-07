@@ -7,6 +7,7 @@ def ler_json_da_web(url):
     # Converte o valor em binário para formato "json" entendível
     output = json.loads(x.content)
     # Percorre o output e lista o conteúdo
+
     if type(output)==list:
         for element in output:
             print(element)
@@ -45,4 +46,5 @@ json_leitura = 'exemplos_arquivos/squirtle.json'
 json_escrita = 'exemplos_arquivos/exemplo.json'
 # ler_arquivo_json(json_leitura)
 # escrever_arquivo_json(json_escrita)
+
 ler_json_da_web(jokeApi)
