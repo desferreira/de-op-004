@@ -8,7 +8,10 @@ def ler_json_da_web(url):
     output = json.loads(x.content)
     # Percorre o output e lista o conteúdo
     for element in output:
-        print(element)
+        print(f'A url do gato é: {element["url"]}')
+        foto_gato = requests.get(element["url"])
+        with open("cat.jpg", 'wb') as f:
+            f.write(foto_gato.content)
 
 def ler_arquivo_json(caminho_arquivo):
     with open(caminho_arquivo, 'r') as arquivo:
