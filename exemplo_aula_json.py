@@ -7,6 +7,8 @@ def ler_json_da_web(url):
     # Converte o valor em binário para formato "json" entendível
     output = json.loads(x.content)
     # Percorre o output e lista o conteúdo
+    if not isinstance(output, list):
+        output = [output]
     for element in output:
         print(f'A url do gato é: {element["url"]}')
         foto_gato = requests.get(element["url"])
